@@ -86,7 +86,6 @@ Your job is to return a valid component tree for any description given to you.
         });
 
         const raw = response.choices[0].message.content;
-        // console.log("GPT RESPONSE: ", raw);
         if (raw === null) {
             console.error("OpenAI response content is null");
             throw new Error("OpenAI response content is null");

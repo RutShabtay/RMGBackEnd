@@ -8,8 +8,13 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(express.json());
 
-  await app.listen(3000);
-  console.log('🚀 Server is running on http://localhost:3000');
+  app.enableCors({
+    origin: `http://localhost:${process.env.PORT || 3000}`,
+    methods: ['POST', 'GET'],
+    credentials: true,
+  });
 
+  await app.listen(process.env.PORT || 3000);
+  console.log(`🚀 Server is running on http://localhost:${process.env.PORT || 3000}`);
 }
 bootstrap();
